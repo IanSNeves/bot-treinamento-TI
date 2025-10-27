@@ -1,0 +1,52 @@
+@use '../variables';
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 15%;
+    background-color: variables.$color-sidebar;
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        padding-left: 2vh;
+    }
+    
+}
+
+.sidebar {
+    position: relative;
+    display: flex;
+    width: 100%;
+
+
+    &__logo {
+        display: flex;
+        padding: 4vh 0;
+        align-items: center;
+        width: 100%;
+
+        img {
+            width: 8vh;
+        }
+    }
+
+    &__links {
+        display: flex;
+        padding-top: 5vh;
+        width: 100%;
+        flex-direction: column;
+        font-size: 1.3rem;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    &__link a{
+        text-decoration: none;
+        color: variables.$color-white;
+    }
+}
