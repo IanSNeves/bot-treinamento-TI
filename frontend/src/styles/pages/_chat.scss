@@ -5,21 +5,18 @@
     display: flex;
     align-self: flex-start;
     flex-direction: column;
-    height: 80%; 
-    width: 85%;
+    height: 100vh; 
+    width: 100%;
+    padding: 1vh 2vh;
     box-sizing: border-box;
 }
 
 // A área onde as mensagens aparecem
-.chat__messages {
-    height: 80vh;
+.chat {
+    height: 100vh;
     width: 100%;
     overflow-y: auto;
-    padding-right: 2vh;
-    padding-left: 2vh;
-    padding-top: 5vh;
     border-radius: 8px;
-    margin-bottom: 15px;
     background-color: variables.$color-white;
     display: flex;
     flex-direction: column;
@@ -53,7 +50,6 @@
 // A área de input (formulário)
 .chat__input-area {
     display: flex;
-    position: fixed;
     bottom: 2rem;
     width: 80%;
     gap: 10px;
