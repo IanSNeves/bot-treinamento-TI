@@ -1,18 +1,15 @@
 <div class="chat-container">
-    <div class="chat__messages" id="chat-messages">
+    <div class="chat" id="chat-messages">
         <div class="message message--bot">
             <p>Olá, serei seu assistente. Como posso te ajudar?</p>
-        </div>    
+        </div>  
+    </div>  
         
         <form action="" id="chat__form" hx-post="{{  url_for('enviar_mensagem')}}" hx-target="#chat-messages" hx-swap="beforeend" hx-indicator="#chat-loading">
             <div class="chat__input-area">
-                <input type="text" name="user_message" placeholder="Digite sua mensagem..." aria-label="mensagem" required>
-                <button type="submit">Enviar</button>
+                <input id="input" type="text" name="user_message" placeholder="Digite sua mensagem..." aria-label="mensagem" required>
+                <button id="enviar_mensagem" type="submit">Enviar</button>
             </div>
         </form>
 
-        <div id="chat-loading" class="htmx-indicator">
-            <p>Digitando...</p>
-        </div>  
-    </div>
 </div>
