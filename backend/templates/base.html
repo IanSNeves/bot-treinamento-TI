@@ -10,12 +10,22 @@
         <header>
             <div class="container">
                 <div class="sidebar__logo">
-                    <img src="{{ url_for('static', filename='img/logo_32x32.png') }}" alt="Logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
                 </div>
                 <nav class="sidebar">
                     <ul class="sidebar__links">
-                        <li class="sidebar__link"><a href="#" hx-get="{{ url_for('chat') }}" hx-target="#content-target">Chat</a></li>
-                        <li class="sidebar__link"><a href="#" hx-get="{{ url_for('menu') }}" hx-target="#content-target" >Menu</a></li>
+                        <li class="sidebar__link">
+                            <img src="{{ url_for('static', filename='img/chat-icon.png') }}" alt="Chat">
+                            <a href="" hx-get="{{ url_for('chat') }}" hx-target="#content-target">
+                                Chat
+                            </a>
+                        </li>
+                        <li class="sidebar__link">
+                            <img src="{{ url_for('static', filename='img/menu-icon.png') }}" alt="Menu">
+                            <a href="" hx-get="{{ url_for('menu') }}" hx-target="#content-target" >
+                                Menu
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

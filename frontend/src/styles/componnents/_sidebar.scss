@@ -8,14 +8,16 @@ header {
     height: 100%;
     width: 20vh;
     background-color: variables.$color-sidebar;
+    background: linear-gradient(180deg,rgba(30, 43, 93, 1) 0%, rgba(0, 74, 97, 1) 100%);
 
     .container {
         flex-direction: column;
         align-items: center;
         display: flex;
-        padding-left: 2vh;
+        gap: 50px;
+        padding-top: 30px;
+        width: 100%;
     }
-    
 }
 
 .sidebar {
@@ -26,23 +28,32 @@ header {
 
     &__logo {
         display: flex;
-        padding: 4vh 0;
         align-items: center;
+        justify-content: center;
         width: 100%;
 
         img {
-            width: 8vh;
+            width: 110px;
         }
     }
 
     &__links {
         display: flex;
-        padding-top: 5vh;
         width: 100%;
         flex-direction: column;
         font-size: 1.3rem;
         gap: 2rem;
         list-style: none;
+
+        &::before{
+            background-color: black;
+        }
+    }
+
+    &__link {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
 
     &__link a{

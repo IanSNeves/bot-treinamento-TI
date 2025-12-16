@@ -7,11 +7,14 @@
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
-    color: variables.$color-text;
 }
 
 
 main {
     display: block;
     margin-left: 20vh;
+}
+
+html{
+    background-color: variables.$color-background;
 }

@@ -5,11 +5,20 @@
         </div>  
     </div>  
         
-        <form action="" id="chat__form" hx-post="{{  url_for('enviar_mensagem')}}" hx-target="#chat-messages" hx-swap="beforeend" hx-indicator="#chat-loading">
-            <div class="chat__input-area">
-                <input id="input" type="text" name="user_message" placeholder="Digite sua mensagem..." aria-label="mensagem" required>
-                <button id="enviar_mensagem" type="submit">Enviar</button>
+    <form id="chat__form" class="chat__form"
+          hx-post="{{ url_for('enviar_mensagem') }}" 
+          hx-target="#chat-messages" 
+          hx-swap="beforeend" 
+          hx-on::after-request="this.reset()">
+          
+        <div class="chat__input-area">
+            <input id="input" type="text" name="user_message" placeholder="Digite sua mensagem..." aria-label="mensagem" required>
+            <div class="botao-enviar">
+                <button id="enviar_mensagem_btn" type="submit">
+                    <img src="{{ url_for('static', filename='img/text-icon.png') }}" alt="enviar">
+                </button>
             </div>
-        </form>
-
+        </div>
+    </form>
+    <div id="chat-loading" class="htmx-indicator">Digitando...</div>
 </div>
