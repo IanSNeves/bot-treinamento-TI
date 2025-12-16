@@ -14,13 +14,60 @@
 // A área onde as mensagens aparecem
 .chat {
     height: 100vh;
-    width: 100%;
+    width: 80%;
+    align-self: center;
     overflow-y: auto;
-    border-radius: 8px;
-    background-color: variables.$color-white;
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    &__form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__input-area {
+    display: flex;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    bottom: 2rem;
+    width: 80%;
+    gap: 10px;
+    border: 1px solid variables.$color-secondary;
+    border-radius: 30px;
+    background-color: variables.$color-white;
+
+    input[type="text"] {
+        background-color: transparent;
+        flex-grow: 1; 
+        border: none;
+        outline: none;
+        font-size: 1rem;
+    }
+
+    button {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        border-radius: 50px;
+        border: none;
+        color: variables.$color-white;
+        background-color: variables.$color-button;
+
+        img{
+            width: 24px;
+        }
+
+        &:hover {
+             background-color: variables.$color-primary-hover;
+        }
+    }
+}
 }
 
 // Estilo base para todas as mensagens
@@ -33,7 +80,7 @@
 
 // Mensagem do BOT
 .message--bot {
-    background-color: #f1f1f1;
+    background-color: variables.$color-message--bot;
     color: variables.$color-text;
     align-self: flex-start;
     border-bottom-left-radius: 2px;
@@ -41,51 +88,18 @@
 
 // Mensagem do USUÁRIO
 .message--user {
-    background-color: variables.$color-sidebar;
-    color: variables.$color-white;
+    background-color: variables.$color-primary-hover;
+    color: #ffff !important;
     align-self: flex-end;
     border-bottom-right-radius: 2px;
 }
 
-// A área de input (formulário)
-.chat__input-area {
-    display: flex;
-    bottom: 2rem;
-    width: 80%;
-    gap: 10px;
 
-    input[type="text"] {
-        flex-grow: 1; // Faz o input ocupar o máximo de espaço
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 1rem;
-    }
-
-    button {
-        padding: 12px 20px;
-        background-color: variables.$color-secondary;
-        color: variables.$color-white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 600;
-        transition: ease-in-out 0.3s;
-
-        &:hover {
-            background-color: variables.$color-primary-hover;
-        }
-    }
-}
-
-// Estilo do indicador de "Digitando..." 
 .htmx-indicator {
     display: none;
     color: #888;
     font-style: italic;
 }
-// Quando o htmx está fazendo uma requisição, ele mostra o indicador
 .htmx-request .htmx-indicator {
     display: block;
 }
