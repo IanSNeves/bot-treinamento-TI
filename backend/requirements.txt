@@ -1,0 +1,9 @@
+Flask
+google-generativeai
+python-dotenv
+requests
+Flask-SQLAlchemy
+pymysql
+flask-login
+cryptography
+markdown

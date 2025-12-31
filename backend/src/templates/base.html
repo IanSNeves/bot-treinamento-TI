@@ -16,13 +16,13 @@
                     <ul class="sidebar__links">
                         <li class="sidebar__link">
                             <img src="{{ url_for('static', filename='img/chat-icon.png') }}" alt="Chat">
-                            <a href="" hx-get="{{ url_for('chat') }}" hx-target="#content-target">
+                            <a href="" hx-get="{{ url_for('main.chat') }}" hx-target="#content-target">
                                 Chat
                             </a>
                         </li>
                         <li class="sidebar__link">
                             <img src="{{ url_for('static', filename='img/menu-icon.png') }}" alt="Menu">
-                            <a href="" hx-get="{{ url_for('menu') }}" hx-target="#content-target" >
+                            <a href="" hx-get="{{ url_for('main.menu') }}" hx-target="#content-target" >
                                 Menu
                             </a>
                         </li>
