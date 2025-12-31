@@ -6,7 +6,7 @@
     </div>  
         
     <form id="chat__form" class="chat__form"
-          hx-post="{{ url_for('enviar_mensagem') }}" 
+          hx-post="{{ url_for('main.enviar_mensagem') }}" 
           hx-target="#chat-messages" 
           hx-swap="beforeend" 
           hx-on::after-request="this.reset()">
