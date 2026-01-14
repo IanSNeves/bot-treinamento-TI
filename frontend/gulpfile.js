@@ -7,7 +7,7 @@ function compilaSass() {
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest('../backend/static/css'));
+    .pipe(gulp.dest('../backend/src/static/css'));
 }
 
 function monitoraSass() {

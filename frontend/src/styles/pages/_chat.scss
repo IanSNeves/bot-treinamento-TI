@@ -1,25 +1,54 @@
 @use '../variables';
 
-// O contêiner principal do chat
-.chat-container {
-    display: flex;
-    align-self: flex-start;
-    flex-direction: column;
-    height: 100vh; 
-    width: 100%;
-    padding: 1vh 2vh;
-    box-sizing: border-box;
-}
-
 // A área onde as mensagens aparecem
 .chat {
     height: 100vh;
-    width: 80%;
+    width: 77vh;
     align-self: center;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    &__container {
+        display: flex;
+        margin: 40px 100px;
+        border-radius: 8px;
+        background-color: variables.$color-background;
+        width: 86%;
+        box-shadow: 2px 2px 9px 5px #0000002b;
+    }
+
+    &__menu {
+        background-color: variables.$color-sidebar;
+        border-radius: 8px;
+        width: 20%;
+        padding: 10px 20px;
+    }
+
+    &__content {
+        display: flex;
+        align-self: flex-start;
+        flex-direction: column;
+        background-color: variables.$color-background;
+        border-radius: 8px;
+        height: 90vh; 
+        width: 80%;
+        padding: 1vh 2vh;
+        box-sizing: border-box;
+    }
+
+    &__novo-chat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: variables.$color-text;
+            font-weight: 600;
+        }
+    }
 
     &__form{
         display: flex;
@@ -34,7 +63,7 @@
     bottom: 2rem;
     width: 80%;
     gap: 10px;
-    border: 1px solid variables.$color-secondary;
+    border: 1.5px solid variables.$color-border;
     border-radius: 30px;
     background-color: variables.$color-white;
 

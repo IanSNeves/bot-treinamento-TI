@@ -1,24 +1,40 @@
-<div class="chat-container">
-    <div class="chat" id="chat-messages">
-        <div class="message message--bot">
-            <p>Olá, serei seu assistente. Como posso te ajudar?</p>
-        </div>  
-    </div>  
-        
-    <form id="chat__form" class="chat__form"
-          hx-post="{{ url_for('main.enviar_mensagem') }}" 
-          hx-target="#chat-messages" 
-          hx-swap="beforeend" 
-          hx-on::after-request="this.reset()">
-          
-        <div class="chat__input-area">
-            <input id="input" type="text" name="user_message" placeholder="Digite sua mensagem..." aria-label="mensagem" required>
-            <div class="botao-enviar">
-                <button id="enviar_mensagem_btn" type="submit">
-                    <img src="{{ url_for('static', filename='img/text-icon.png') }}" alt="enviar">
-                </button>
+
+<div class="chat__container">
+    <div class="chat__menu">
+        <div class="chat__item">
+            <div class="chat__novo-chat">
+                <a href="">Novo Chat</a>
+                <img src="{{ url_for('static', filename='img/novo-chat.png') }}" alt="">
+            </div>
+            <div class="chat__item">
+                <div class="chat__chat-salvo">
+                    
+                </div>
             </div>
         </div>
-    </form>
-    <div id="chat-loading" class="htmx-indicator">Digitando...</div>
+    </div>
+    <div class="chat__content">
+        <div class="chat" id="chat-messages">
+            <div class="message message--bot">
+                <p>Olá, serei seu assistente. Como posso te ajudar?</p>
+            </div>  
+        </div>  
+            
+        <form id="chat__form" class="chat__form"
+            hx-post="{{ url_for('main.enviar_mensagem') }}" 
+            hx-target="#chat-messages" 
+            hx-swap="beforeend" 
+            hx-on::after-request="this.reset()">
+            
+            <div class="chat__input-area">
+                <input id="input" type="text" name="user_message" placeholder="Digite sua mensagem..." aria-label="mensagem" required>
+                <div class="botao-enviar">
+                    <button id="enviar_mensagem_btn" type="submit">
+                        <img src="{{ url_for('static', filename='img/text-icon.png') }}" alt="enviar">
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div id="chat-loading" class="htmx-indicator">Digitando...</div>
+    </div>
 </div>

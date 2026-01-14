@@ -4,6 +4,9 @@ import os
 from urllib.parse import quote_plus
 from database import db
 from routes import main_bp 
+from flask_login import LoginManager
+from models import Usuarios
+
 
 load_dotenv()
 
@@ -21,6 +24,16 @@ app.config['SECRET_KEY'] = bdSenha
 
 # Inicialização do Banco
 db.init_app(app)
+
+# configuração do loginManager
+login_manager = LoginManager()
+login_manager.login_view = 'main.login'
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Usuarios.query.get(int(user_id))
+
 
 # Registro das Rotas (Blueprint)
 app.register_blueprint(main_bp)
