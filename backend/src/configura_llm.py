@@ -19,7 +19,7 @@ def buscar_contexto(prompt):
     filtros = []
     
     for palavra in palavras:
-        if len(palavra) > 3: # Ignora palavras curtas como "de", "com", "que"
+        if len(palavra) > 3: 
             filtros.append(BaseDeConhecimento.titulo.like(f'%{palavra}%'))
             filtros.append(BaseDeConhecimento.conteudo.like(f'%{palavra}%'))
     
@@ -27,14 +27,12 @@ def buscar_contexto(prompt):
         return ""
 
     try:
-        # Busca registros que contenham QUALQUER uma das palavras chaves
         resultados = BaseDeConhecimento.query.filter(or_(*filtros)).limit(3).all()
 
         texto_contexto = ""
         for item in resultados:
             texto_contexto += f"\n---\nAssunto: {item.titulo}\nConteúdo: {item.conteudo}\n"
         
-        # Print para você ver no terminal se ele achou algo (Debug)
         print(f"DEBUG - Contexto encontrado: {texto_contexto}") 
         
         return texto_contexto
@@ -56,7 +54,7 @@ def bot(prompt):
         PERGUNTA DO USUÁRIO:
         {prompt}"""
     else:
-        prompt_final = prompt
+        prompt_final = PROMPT_DO_SISTEMA + prompt
 
     if len(chat.history) > 8:
         chat.history = remover_mensagens_antigas(chat.history)
