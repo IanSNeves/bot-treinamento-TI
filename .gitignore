@@ -1,54 +1,23 @@
-# ------------------------------------
-# 1. Dependências e Ferramentas (Node/Frontend)
-# ------------------------------------
-# Node.js
 /frontend/node_modules/
 /frontend/package-lock.json
 /frontend/npm-debug.log*
 
-# Gulp / Build
 /frontend/cache/
-
-# ------------------------------------
-# 2. Python / Flask / Backend
-# ------------------------------------
 /backend/venv/
 /backend/static/
 
-# Arquivos de bytecode e caches
 *.py[cod]
 /__pycache__/
 *.pyd
 *.so
-
-# Banco de dados
-# Se você usar SQLite (comum em desenvolvimento Flask)
 *.sqlite
 *.db
-/backend/*.db # Se o seu banco estiver na raiz do backend
-
-# Variáveis de ambiente (Segurança!)
-# O arquivo .env contém chaves e credenciais
+/backend/*.db # 
 .env
-
-# ------------------------------------
-# 3. Arquivos Gerados Automaticamente
-# ------------------------------------
-# Arquivos de logs
 *.log
-
-# Caches de IDEs (Visual Studio Code, PyCharm, etc.)
-# VS Code
 .vscode/
-
-# PyCharm / IntelliJ
 .idea/
-
-# macOS / Windows
 .DS_Store
 Thumbs.db
-
-# Arquivos de deploy
-# Se você gerar pacotes de distribuição
 /dist/
 /build/
