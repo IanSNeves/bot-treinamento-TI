@@ -14,7 +14,7 @@ def buscar_contexto(prompt):
     filtros = []
     
     for palavra in palavras:
-        if len(palavra) > 3: # Ignora palavras curtas como "de", "com", "que"
+        if len(palavra) > 3: 
             filtros.append(BaseDeConhecimento.titulo.like(f'%{palavra}%'))
             filtros.append(BaseDeConhecimento.conteudo.like(f'%{palavra}%'))
     
@@ -22,15 +22,14 @@ def buscar_contexto(prompt):
         return ""
 
     try:
-        # Busca registros que contenham QUALQUER uma das palavras chaves
         resultados = BaseDeConhecimento.query.filter(or_(*filtros)).limit(3).all()
 
         texto_contexto = ""
         for item in resultados:
             texto_contexto += f"\n---\nAssunto: {item.titulo}\nConteúdo: {item.conteudo}\n"
         
-        # Print para você ver no terminal se ele achou algo (Debug)
-        print(f"DEBUG - Contexto encontrado: {texto_contexto}") 
+        print(f"DEBUG - Contexto encontrado: {texto_contexto}")
+        print(f"historico: {history}") 
         
         return texto_contexto
     except Exception as e:
