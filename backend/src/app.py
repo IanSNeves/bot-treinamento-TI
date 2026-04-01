@@ -1,10 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 from dotenv import load_dotenv
 import os
 from urllib.parse import quote_plus
 from database import db
-from routes import main_bp 
-from flask_login import LoginManager
+from routes.routes import main_bp 
+from routes.auth import auth_bp
+from flask_login import LoginManager, login_required
 from models import Usuarios
 
 
@@ -22,25 +23,30 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://usuario_flask:{bdSenha
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = bdSenha
 
-# Inicialização do Banco
-db.init_app(app)
-
-# configuração do loginManager
+# --- Configuração do Flask-Login ---
 login_manager = LoginManager()
-login_manager.login_view = 'main.login'
 login_manager.init_app(app)
+login_manager.login_view = 'auth.login' # Rota para a qual usuários não logados são redirecionados
 
 @login_manager.user_loader
 def load_user(user_id):
     return Usuarios.query.get(int(user_id))
 
+# Inicialização do Banco
+db.init_app(app)
 
-# Registro das Rotas (Blueprint)
-app.register_blueprint(main_bp)
+# Registro das Rotas
+app.register_blueprint(main_bp, url_prefix='/api') # API do chat
+app.register_blueprint(auth_bp) # Rotas de autenticação (/login, /logout)
 
-# Criação das tabelas (se não existirem)
+@app.route('/')
+@login_required
+def index():
+    return render_template('base.html')
+
+# Criação das tabelas
 with app.app_context():
-    from models import BaseDeConhecimento 
+    from models import BaseDeConhecimento
     db.create_all()
 
 if __name__ == '__main__':
