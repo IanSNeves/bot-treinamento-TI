@@ -2,7 +2,14 @@ let chat = document.querySelector('#chat');
 let input = document.querySelector('#input');
 let botaoEnviar = document.querySelector('#enviar_mensagem');
 
-async function enviarMensagem() {
+if (botaoEnviar) {
+    botaoEnviar.addEventListener('click', function(event) {
+        event.preventDefault(); 
+    });
+}
+
+async function enviarMensagem(event) {
+    if (event) event.preventDefault();
     if(input.value == "" || input.value == null) return;
     let menssagem = input.value;
     input.value = "";
@@ -14,9 +21,8 @@ async function enviarMensagem() {
     chat.appendChild(novaMensagemBot);
     chat.scrollTop = chat.scrollHeight;
     novaMensagemBot.innerHTML = "Pensando ..."
-
-    const resposta = await fetch("http://127.0.0.1:5000", {
-        methot: "POST",
+    const resposta = await fetch("/api/enviar_mensagem", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -28,7 +34,3 @@ async function enviarMensagem() {
     vaiParaFinalDoChat();
 
 };
-
-function criarMensagemUsuario() {
-
-}

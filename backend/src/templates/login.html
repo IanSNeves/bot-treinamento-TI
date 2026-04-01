@@ -3,22 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Labelson</title>
+    <title></title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
 </head>
 <body>
     <main class="login">
         <div class="login__hero">
-
+            <div class="login__logo">
+                <img src="{{ url_for('static', filename='img/logo.png')}}" alt="Logo" class="login__logo-img">
+            </div>
         </div>
-        <div class="login__form">
-            <form action="">
-                <div class="logo">
-                    <img src="{{ url_for('static', filename='img/logo.png')}}" alt="Logo">
+        <div class="login__form-container">
+            <form action="{{ url_for('auth.login') }}" method="post" class="login__form">
+                <h2 class="login__title">Login</h2>
+                
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="mensagens-erro">
+                            {% for message in messages %}
+                                <p style="color: red; margin-bottom: 10px;">{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <div class="login__input-container">
+                    <img src="{{ url_for('static', filename='img/user-solid.png') }}" alt="user icon">
+                    <input type="text" name="username" placeholder="Insira seu login">
                 </div>
-                <input type="text" placeholder="Insira seu login">
-                <input type="password" placeholder="Insira sua senha">
-                <button type="submit">Entrar</button>        
+                <div class="login__input-container">
+                    <img src="{{ url_for('static', filename='img/lock-solid.png') }}" alt="lock icon">
+                    <input type="password" name="password" placeholder="Insira sua senha">
+                </div>
+                
+                <button id="enviar_mensagem" type="submit">Enviar</button>
+                
+                <a href="">Esqueceu sua senha?</a>
             </form>
         </div>
     </main>

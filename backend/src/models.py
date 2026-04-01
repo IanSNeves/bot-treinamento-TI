@@ -1,5 +1,6 @@
 from database import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 class BaseDeConhecimento(db.Model):
     __tablename__ = 'base_de_conhecimento'
@@ -7,7 +8,7 @@ class BaseDeConhecimento(db.Model):
     titulo = db.Column(db.String(100), nullable=False)
     conteudo = db.Column(db.Text, nullable=False)
 
-class Usuarios(db.Model):
+class Usuarios(db.Model, UserMixin):
     __tablename__ = 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)

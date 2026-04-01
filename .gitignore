@@ -4,7 +4,9 @@
 
 /frontend/cache/
 /backend/venv/
-/backend/static/
+/backend/src/static/css
+
+criar_admin.py
 
 *.py[cod]
 /__pycache__/
